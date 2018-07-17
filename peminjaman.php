@@ -144,13 +144,23 @@ include 'koneksi.php';
                   ?>
                   <tr>
                     <td><?php echo $no++; ?></td>
-                    <td><?php echo $d['nama']; ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <?php
+                        $buku = mysqli_query($koneksi, "SELECT * FROM buku WHERE id='$d[id_buku]'");
+                        $id = mysqli_fetch_array($buku);
+                        $namabuku = $id['nama'];
+                      ?>
+                    <td><?php echo $namabuku; ?></td>
+                    <?php
+                        $anggota = mysqli_query($koneksi, "SELECT * FROM anggota WHERE id='$d[id_anggota]'");
+                        $id = mysqli_fetch_array($anggota);
+                        $namaanggota = $id['nama'];
+                      ?>
+                    <td><?php echo $namaanggota; ?></td>
+                    <td><?php echo $d['tanggal_pinjam']; ?></td>
+                    <td><?php echo $d['tanggal_kembali']; ?></td>
                     <td>
                       <a class="btn btn-primary btn-xs" href="edit_kategori.php?id=<?php echo $d['id']; ?>"><i class="fa fa-pencil"></i></a>
-                      <a class="btn btn-danger btn-xs" href="hapus_kategori.php?id=<?php echo $d['id']; ?>"><i class="fa fa-trash-o "></i></a>
+                      <a class="btn btn-danger btn-xs" href="hapus_peminjaman.php?id=<?php echo $d['id']; ?>"><i class="fa fa-trash-o "></i></a>
                     </td>
                   </tr>
                   <?php 

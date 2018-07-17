@@ -161,7 +161,7 @@
             <div class="row mt">
               <div class="col-lg-12">
               <a href="peminjaman.php" class="btn btn-primary">Kembali</a><hr>
-              <form action="input-aksi-anggota.php" method="post">
+              <form action="input-aksi-peminjaman.php" method="post">
     					<label>Buku : </label>
                       <?php
                         include 'koneksi.php';
