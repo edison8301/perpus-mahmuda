@@ -1,6 +1,3 @@
-<?php
-include 'koneksi.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +23,44 @@ include 'koneksi.php';
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+		input[type=text], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+		}
+
+    input[type=date], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+		input[type=submit] {
+		    width: 100%;
+		    background-color: #4CAF50;
+		    color: white;
+		    padding: 14px 20px;
+		    margin: 8px 0;
+		    border: none;
+		    border-radius: 4px;
+		    cursor: pointer;
+		}
+
+		input[type=submit]:hover {
+		    background-color: #45a049;
+		}
+
+
+	</style>
   </head>
 
   <body>
@@ -125,38 +160,52 @@ include 'koneksi.php';
             <h3><i class="fa fa-angle-right"></i>LibraryWeb</h3>
             <div class="row mt">
               <div class="col-lg-12">
-              <a class="btn btn-primary" href="input-peminjaman.php">+ TAMBAH PEMINJAMAN</a>
-              <table class="table table-striped table-advance table-hover">
-              <hr>
-                <tr>
-                  <th>No</th>
-                  <th>Buku</th>
-                  <th>Nama Anggota</th>
-                  <th>Tanggal Pinjam</th>
-                  <th>Tanggal kemabali</th>
-                  <td>Aksi</td>
-                </tr>
-                <?php 
-                
-                $no = 1;
-                $data = mysqli_query($koneksi,"select * from peminjaman");
-                while($d = mysqli_fetch_array($data)){
+              <a href="peminjaman.php" class="btn btn-primary">Kembali</a><hr>
+              <form action="input-aksi-anggota.php" method="post">
+    					<label>Buku : </label>
+                      <?php
+                        include 'koneksi.php';
+                        $read_buku = mysqli_query($koneksi, "SELECT * FROM buku");
+                      ?>
+                      <select name="buku">
+                        <option>Pilih Buku</option>
+                        <?php
+                        if ($read_buku->num_rows > 0 ) {
+                          while ($data = $read_buku->fetch_assoc()) {
+                            ?>
+                            <option value="<?=$data['id'];?>"><?=$data['nama'];?></option>
+                            <?php
+                          }
+                        }
+                        ?>
+                      </select>
+
+    					<label>Nama Anggota</label>
+    					<?php
+                  include 'koneksi.php';
+                  $read_anggota = mysqli_query($koneksi, "SELECT * FROM anggota");
                   ?>
-                  <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $d['nama']; ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <a class="btn btn-primary btn-xs" href="edit_kategori.php?id=<?php echo $d['id']; ?>"><i class="fa fa-pencil"></i></a>
-                      <a class="btn btn-danger btn-xs" href="hapus_kategori.php?id=<?php echo $d['id']; ?>"><i class="fa fa-trash-o "></i></a>
-                    </td>
-                  </tr>
-                  <?php 
-                }
-                ?>
-              </table>
+                  <select name="anggota">
+                  <option>Pilih Anggota</option>
+                  <?php
+                  if ($read_anggota->num_rows > 0 ) {
+                  while ($data = $read_anggota->fetch_assoc()) {
+                  ?>
+                  <option value="<?=$data['id'];?>"><?=$data['nama'];?></option>
+                  <?php
+                    }
+                  }
+                  ?>
+                  </select>
+
+    					<label>Tanggal Pinjam</label>		
+    					<input type="date" name="tanggal_pinjam">
+
+    					<label>Tanggal Kembali</label>
+    					<input type="date" name="tanggal_kembali">
+
+    					<input type="submit" value="Simpan">
+    				</form>
               </div>
             </div>
       
