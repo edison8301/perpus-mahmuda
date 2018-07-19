@@ -135,5 +135,6 @@
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
   </section>
+  <?php include 'javascript.php';?>
   </body>
 </html>

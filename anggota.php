@@ -1,6 +1,8 @@
 <?php include 'koneksi.php';?>
 <?php include 'header.php';?>
 <?php include 'navigation.php';?>
+<html>
+<body>
 <section id="container" >
 <section id="main-content">
           <section class="wrapper site-min-height">
@@ -51,5 +53,7 @@
       
     </section><! --/wrapper -->
       </section>
-<?php include 'footer.php';?>
 </section>
+<?php include 'javascript.php';?>
+</body>
+</html>

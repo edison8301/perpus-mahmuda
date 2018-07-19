@@ -71,5 +71,8 @@
       
     </section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
+      <?php include 'footer.php';?>
+      </section>
+      <?php include 'javascript.php';?>
   </body>
 </html>
