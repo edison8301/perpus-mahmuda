@@ -19,20 +19,7 @@
   ?>
 <div class="login-page">
   <div class="form">
-<!--     <form class="register-form" action="">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form> -->
-    <!-- <form class="login-form" action="cek_login.php" method="post">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
-    </form> -->
-    <form class="form-horizontal" method="post" action="cek_login.php">
+    <form class="form-horizontal" method="post" action="aksi_login.php">
       <div class="form-group">
         <div class="col-sm-10">
           <input type="username" class="form-control" id="username" placeholder="Enter Username" name="username" autocomplete="off" autofocus="on" required>
@@ -45,8 +32,8 @@
       </div>
       <div class="form-group">        
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Submit</button>
-          <p class="message">Not registered? <a href="#">Create an account</a></p>
+          <button type="submit" class="btn btn-default">Login</button>
+          <p class="message">Not registered? <a href="register.php">Create an account</a></p>
         </div>
       </div>
   </form>
